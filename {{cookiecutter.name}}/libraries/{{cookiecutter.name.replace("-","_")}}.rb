@@ -17,14 +17,14 @@
 #
 
 class Chef
-  class Resource::{{ ''.join(s.capitalize() for s in re.split('[_-]', cookiecutter.name)) }} < Resource
+  class Resource::{% for s in cookiecutter.name.replace('-', '_').split('_') %}{{ s.capitalize() }}{% endfor %} < Resource
     include Poise
     actions(:enable)
 
     attribute(:option, kind_of: String, default: lazy { node['{{ cookiecutter.name }}']['option'] })
   end
 
-  class Provider::{{ ''.join(s.capitalize() for s in re.split('[_-]', cookiecutter.name)) }} < Provider
+  class Provider::{% for s in cookiecutter.name.replace('-', '_').split('_') %}{{ s.capitalize() }}{% endfor %} < Provider
     include Poise
 
     def action_enable
