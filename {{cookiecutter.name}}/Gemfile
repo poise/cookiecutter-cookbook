@@ -27,7 +27,11 @@ gem 'vagrant-wrapper'
 gem 'foodcritic', '>= 3.0.3'
 gem 'chef', '~> 11.12'
 
+group(:vagrant) do
+  gem 'vagrant', github: 'mitchellh/vagrant', ref: 'v1.5.4'
+end
+
 group(:plugins) do
-  gem 'vagrant-berkshelf'
+  gem 'vagrant-berkshelf', '>= 2.0.1'
   gem 'vagrant-omnibus'
 end
